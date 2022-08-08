@@ -21,11 +21,8 @@ public class MadDwarfPlugin extends Plugin
 	@Inject
 	private Client client;
 
-	@Inject
-	private MadDwarfConfig config;
-
-	private int[] dwarfId = {NpcID.DRUNKEN_DWARF, NpcID.DRUNKEN_DWARF_2408, NpcID.DRUNKEN_DWARF_2409,
-								NpcID.DRUNKEN_DWARF_2429, NpcID.DRUNKEN_DWARF_4305};
+	private int[] dwarfId = { NpcID.DRUNKEN_DWARF, NpcID.DRUNKEN_DWARF_2408, NpcID.DRUNKEN_DWARF_2409,
+								NpcID.DRUNKEN_DWARF_2429, NpcID.DRUNKEN_DWARF_4305 };
 	public boolean kebabDropped = false;
 	public boolean beerDropped = false;
 	Insults insultsClass = new Insults();
@@ -47,7 +44,7 @@ public class MadDwarfPlugin extends Plugin
 	public void onGameTick (GameTick gameTick)
 	{
 		int currentTick = client.getTickCount();
-		if (kebabDropped && beerDropped)
+		if (kebabDropped || beerDropped)
 		{
 			if (currentTick % 8 == 0)
 			{
@@ -89,7 +86,7 @@ public class MadDwarfPlugin extends Plugin
 		int itemId = menuOptionClicked.getItemId();
 		MenuEntry clickedMenuEntry = menuOptionClicked.getMenuEntry();
 
-		if (itemId == ItemID.COOKED_KARAMBWAN)
+		if (itemId == ItemID.KEBAB)
 		{
 			if (clickedMenuEntry.getOption() == "Drop")
 			{
@@ -97,7 +94,7 @@ public class MadDwarfPlugin extends Plugin
 			}
 		}
 
-		if (itemId == ItemID.BIG_BONES)
+		if (itemId == ItemID.BEER)
 		{
 			if (clickedMenuEntry.getOption() == "Drop")
 			{
@@ -109,11 +106,5 @@ public class MadDwarfPlugin extends Plugin
 	public int getRandomNumber(int min, int max)
 	{
 		return (int) ((Math.random() * (max - min)) + min);
-	}
-
-	@Provides
-	MadDwarfConfig provideConfig(ConfigManager configManager)
-	{
-		return configManager.getConfig(MadDwarfConfig.class);
 	}
 }
