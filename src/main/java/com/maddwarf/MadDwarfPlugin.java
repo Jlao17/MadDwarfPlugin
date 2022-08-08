@@ -56,8 +56,6 @@ public class MadDwarfPlugin extends Plugin
 						if (npc.getId() == dwarfId[i])
 						{
 							npc.setOverheadText(insults[getRandomNumber(0, insults.length)]);
-							npc.setAnimation(859); //ID for angry emote
-							npc.setAnimationFrame(0);
 						}
 					}
 				}
