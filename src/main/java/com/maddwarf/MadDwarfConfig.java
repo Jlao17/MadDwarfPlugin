@@ -1,19 +1,19 @@
-package com.example;
+package com.maddwarf;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("example")
-public interface ExampleConfig extends Config
+@ConfigGroup("maddwarf")
+public interface MadDwarfConfig extends Config
 {
 	@ConfigItem(
-		keyName = "greeting",
-		name = "Welcome Greeting",
+		keyName = "Profanity",
+		name = "Profanity toggle",
 		description = "The message to show to the user when they login"
 	)
-	default String greeting()
+	default boolean showProfanity()
 	{
-		return "Hello";
+		return false;
 	}
 }
